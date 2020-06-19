@@ -8,4 +8,11 @@ add_executable(PS main.cpp
         Habitacion/Habitacion.cpp Habitacion/Habitacion.h
         Hotel/Hotel.cpp Hotel/Hotel.h
         Usuario/Usuario.cpp Usuario/Usuario.h
+        Cliente/Cliente.cpp Cliente/Cliente.h
+        Administrador/Administrador.h Administrador/Administrador.cpp
+        Turno/Turno.cpp Turno/Turno.h
+        Reservacion/Reservacion.cpp Reservacion/Reservacion.h
+        TipoHabitacion/TipoHabitacion.cpp TipoHabitacion/TipoHabitacion.h
+        ReciboHospedaje/ReciboHospedaje.cpp ReciboHospedaje/ReciboHospedaje.h
+        AdquirirServicio/AdquirirServicio.cpp AdquirirServicio/AdquirirServicio.h
         )

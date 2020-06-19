@@ -13,7 +13,19 @@ class Servicio {
     string nombre;
     double precio;
 public:
+    Servicio(string nombre, double precio);
 
+    virtual ~Servicio();
+
+    const string &getNombre() const;
+
+    void setNombre(const string &nombre);
+
+    double getPrecio() const;
+
+    void setPrecio(double precio);
+
+    Servicio();
 
 };
 

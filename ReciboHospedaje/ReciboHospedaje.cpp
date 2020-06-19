@@ -18,20 +18,20 @@ void ReciboHospedaje::setClientes(Cliente *clientes) {
     ReciboHospedaje::clientes = clientes;
 }
 
-const Reservacion &ReciboHospedaje::getReservacion() const {
-    return reservacion;
+const int &ReciboHospedaje::getReservacion() const {
+    return idreservacion;
 }
 
-void ReciboHospedaje::setReservacion(const Reservacion &reservacion) {
-    ReciboHospedaje::reservacion = reservacion;
+void ReciboHospedaje::setReservacion(const int &reservacion) {
+    ReciboHospedaje::idreservacion = reservacion;
 }
 
 const Administrador &ReciboHospedaje::getAdministrador() const {
     return administrador;
 }
 
-void ReciboHospedaje::setAdministrador(const Administrador &administrador) {
-    ReciboHospedaje::administrador = administrador;
+void ReciboHospedaje::setAdministrador(Administrador administrador) {
+    ReciboHospedaje::administrador =  administrador;
 }
 
 AdquirirServicio *ReciboHospedaje::getAdquirirServicio() const {

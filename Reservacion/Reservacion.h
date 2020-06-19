@@ -4,15 +4,19 @@
 
 #ifndef PS_RESERVACION_H
 #define PS_RESERVACION_H
-#include "ctime"
+#include "string"
+using namespace std;
+
 #include "../Habitacion/Habitacion.h"
 
+
+
 class Reservacion {
+    Habitacion habitacion;
     int codigo;
     int cantidadPErsonas;
     time_t fechaIngreso;
     time_t fechaSalida;
-    Habitacion habitacion;
 public:
     virtual ~Reservacion();
 

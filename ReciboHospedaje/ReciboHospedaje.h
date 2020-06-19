@@ -7,7 +7,6 @@
 
 #include "string"
 #include "../Cliente/Cliente.h"
-#include "../Reservacion/Reservacion.h"
 #include "../Administrador/Administrador.h"
 #include "../AdquirirServicio/AdquirirServicio.h"
 
@@ -15,7 +14,7 @@ using namespace std;
 
 class ReciboHospedaje {
     Cliente *clientes;
-    Reservacion reservacion;
+    int idreservacion;
     Administrador administrador;
     AdquirirServicio *adquirirServicio;
 public:
@@ -27,13 +26,13 @@ public:
 
     void setClientes(Cliente *clientes);
 
-    const Reservacion &getReservacion() const;
+    const int &getReservacion() const;
 
-    void setReservacion(const Reservacion &reservacion);
+    void setReservacion(const int &reservacion);
 
     const Administrador &getAdministrador() const;
 
-    void setAdministrador(const Administrador &administrador);
+    void setAdministrador(Administrador administrador);
 
     AdquirirServicio *getAdquirirServicio() const;
 

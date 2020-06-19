@@ -37,9 +37,6 @@ void Habitacion::setTipoHabitacion(const TipoHabitacion &tipoHabitacion) {
     Habitacion::tipoHabitacion = tipoHabitacion;
 }
 
-Reservacion *const *Habitacion::getReservacion() const {
-    return reservacion;
-}
 
 ReciboHospedaje *const *Habitacion::getReciboHospedaje() const {
     return reciboHospedaje;

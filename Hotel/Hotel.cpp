@@ -32,3 +32,27 @@ const Turno *Hotel::getTurnos() const {
 const TipoHabitacion *Hotel::getTipoHabitaciones() const {
     return tipoHabitaciones;
 }
+
+void Hotel::setServicios(Servicio *servicios) {
+    Hotel::servicios = servicios;
+}
+
+void Hotel::setHabitaciones(Habitacion *habitaciones) {
+    Hotel::habitaciones = habitaciones;
+}
+
+void Hotel::setClientes(Cliente *clientes) {
+    Hotel::clientes = clientes;
+}
+
+void Hotel::setAdministradores(Administrador *administradores) {
+    Hotel::administradores = administradores;
+}
+
+void Hotel::setTurnos(Turno *turnos) {
+    Hotel::turnos = turnos;
+}
+
+void Hotel::setTipoHabitaciones(TipoHabitacion *tipoHabitaciones) {
+    Hotel::tipoHabitaciones = tipoHabitaciones;
+}

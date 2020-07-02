@@ -34,6 +34,18 @@ public:
 
     const TipoHabitacion *getTipoHabitaciones() const;
 
+    void setServicios(Servicio *servicios);
+
+    void setHabitaciones(Habitacion *habitaciones);
+
+    void setClientes(Cliente *clientes);
+
+    void setAdministradores(Administrador *administradores);
+
+    void setTurnos(Turno *turnos);
+
+    void setTipoHabitaciones(TipoHabitacion *tipoHabitaciones);
+
     virtual ~Hotel();
 
 

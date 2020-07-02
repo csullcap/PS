@@ -3,7 +3,7 @@
 using namespace std;
 int main() {
     try{
-
+//HU
         MYSQL* conn;
         MYSQL_ROW row;
         MYSQL_RES *res;

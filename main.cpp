@@ -2,15 +2,13 @@
 #include "Funciones/funciones.cpp"
 #include "Conexion/Conexion.h"
 #include "Administrador/Administrador.h"
-
 using namespace std;
-Conexion bd_conexion;
-int main() {
 
+int main() {
+    Conexion bd_conexion;
     Hotel hotel=bd_conexion.getDatosHotel(2);
     Administrador administrador;
     char op;
-    string nombreHotel="Los Angeles";
     do {
         cout <<"Hotel "<<hotel.nombre<< endl;
         cout <<"Direccion "<<hotel.direccion<< endl;
@@ -41,7 +39,6 @@ int main() {
                 cin.ignore(256,'\n');
                 cout<< "Opcion Invalida";
                 break;
-
         }
     }while (op!='2');
     bd_conexion.finalizarConexion();

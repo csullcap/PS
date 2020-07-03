@@ -1,7 +1,11 @@
 #include <iostream>
 #include <afxres.h>
+#include <conio.h>
+#define ENTER 13
+#define BACKSPACE 8
 #include "../Administrador/Administrador.h"
 #include "../Conexion/Conexion.h"
+
 
 using namespace std;
 bool iniciarSesion(Administrador& admin,Conexion bd_conexion);
@@ -17,9 +21,25 @@ inline bool iniciarSesion(Administrador& admin,Conexion bd_conexion) {
         cin.ignore(256, '\n');
         getline(cin, user);
         cout << "Ingrese Contraseña" << endl;
-        getline(cin, password);
+        char caracter;
+        caracter = getch();
+        password = "";
+        while (caracter != ENTER) {
+            if (caracter != BACKSPACE) {
+                password.push_back(caracter);
+                cout << "*";
+            }
+            else {
+                if (password.length() > 0) {
+                    cout << "\b \b";
+                    password = password.substr(0, password.length() - 1);
+                }
+            }
+            caracter = getch();
+        }
+        //getline(cin, password);
         if(bd_conexion.inicioSesion(admin,user,password)) {
-            cout<<"Cuenta valida"<<endl;
+            cout<<endl<<endl<<"Cuenta valida"<<endl;
             cout<<"Espere un momento";
             Sleep(1000);
             cout<<".";
@@ -30,7 +50,7 @@ inline bool iniciarSesion(Administrador& admin,Conexion bd_conexion) {
             autentificacion=true;
         }
         else{
-            cout<<"Usuario o contraseña invalidos"<<endl;
+            cout<<endl<<endl<<"Usuario o contraseña invalidos"<<endl;
             cout<<"Desea intertar nuevamente (1)Si (2)No"<<endl;
             cout<<"Opcion: ";
             cin>>op;

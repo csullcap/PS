@@ -4,10 +4,10 @@ project(PS)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/ejecutable")
 
-include_directories("C:\\Program Files\\MySQL\\Connector C++ 1.1\\include")
+include_directories("C:\\Program Files\\MySQL\\Connector C++ 8.0\\include")
 include_directories("C:\\Program Files\\MySQL\\MySQL Server 8.0\\include")
 link_directories("C:\\Program Files\\MySQL\\MySQL Server 8.0\\lib")
-link_directories("C:\\Program Files\\MySQL\\Connector C++ 1.1\\lib\\opt")
+link_directories("C:\\Program Files\\MySQL\\Connector C++ 8.0\\lib64\\vs14")
 #add_executable(ga "mysqlcppconn.lib")
 #add_dependencies(PS libmysql.lib)
 set(P_S main.cpp
@@ -22,7 +22,7 @@ set(P_S main.cpp
 #        ReciboHospedaje/ReciboHospedaje.cpp ReciboHospedaje/ReciboHospedaje.h
 #        AdquirirServicio/AdquirirServicio.cpp AdquirirServicio/AdquirirServicio.h
 #        Habitacion/Habitacion.cpp Habitacion/Habitacion.h
-        )
+        Funciones/funciones.cpp Conexion/Conexion2.cpp Conexion/Conexion.cpp Conexion/Conexion.h)
 add_executable(PS ${P_S})
 target_link_libraries(PS mysqlcppconn.lib)
 target_link_libraries(PS libmysql)

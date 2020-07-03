@@ -1,41 +1,53 @@
-#include <mysql.h>
 #include <iostream>
+#include "Funciones/funciones.cpp"
+#include "Conexion/Conexion.h"
+#include "Administrador/Administrador.h"
+
 using namespace std;
+Conexion bd_conexion;
 int main() {
-    try{
-//HU
-        MYSQL* conn;
-        MYSQL_ROW row;
-        MYSQL_RES *res;
-        conn = mysql_init(nullptr);
-        conn = mysql_real_connect(conn, "sql10.freemysqlhosting.net", "sql10351188", "FCWP53Cz47", "sql10351188", 3306,
-                                  nullptr, 0);
-        if (conn) {
-            string query = "select * from Hotel";
-            const char* q = query.c_str();
-            int qstate = mysql_query(conn , q);
-            if(!qstate){
-                res = mysql_store_result(conn);
-                while(row = mysql_fetch_row(res)){
-                    printf("id: %s, nomre: %s, direccion: %s, telefono: %s\n",row[0],row[1],row[2],row[3]);
+
+    Hotel hotel=bd_conexion.getDatosHotel(2);
+    Administrador administrador;
+    char op;
+    string nombreHotel="Los Angeles";
+    do {
+        cout <<"Hotel "<<hotel.nombre<< endl;
+        cout <<"Direccion "<<hotel.direccion<< endl;
+        cout <<"Telefono "<<hotel.telefono<< endl;
+        cout<<"Seleccione la opcion"<<endl;
+        cout<<"(1) Iniciar Sesion"<<endl;
+        cout<<"(2) Cerrar"<<endl;
+        cout<<"Opcion : ";
+        cin>>op;
+
+        switch (op) {
+
+            case '1':
+                system("cls");
+                if(iniciarSesion(administrador,bd_conexion)){
+                    cout<<"Bienvenido al sistema "+administrador.nombre<<" "<<administrador.apellidos<<endl;
+                    menu_principal(administrador,bd_conexion);
                 }
-            }
-            cout << "gaa";
-        } else {
-            cout << "no gaaa";
+                break;
+
+            case '2':
+                system("cls");
+                cout<<"Fin del programa"<<endl;
+                break;
+
+            default:
+                system("cls");
+                cin.ignore(256,'\n');
+                cout<< "Opcion Invalida";
+                break;
+
         }
-    } catch (exception &e) {
-        cout <<e.what();
-    }
+    }while (op!='2');
+    bd_conexion.finalizarConexion();
     return 0;
 }
 
-/*
-Server: sql10.freemysqlhosting.net
-Name: sql10351188
-Username: sql10351188
-Password: FCWP53Cz47
-Port number: 3306
- */
+
 
 

@@ -8,40 +8,13 @@
 
 using namespace std;
 
-class Cliente {
-    int identificacion;
-    int telefono;
+struct Cliente {
+
+    int id_cliente;
+    int id_hotel;
     string nombre;
     string apellidos;
-    string direccion;
-public:
-    virtual ~Cliente();
-
-    int getIdentificacion() const;
-
-    void setIdentificacion(int identificacion);
-
-    int getTelefono() const;
-
-    void setTelefono(int telefono);
-
-    const string &getNombre() const;
-
-    void setNombre(const string &nombre);
-
-    const string &getApellidos() const;
-
-    void setApellidos(const string &apellidos);
-
-    const string &getDireccion() const;
-
-    void setDireccion(const string &direccion);
-
-    Cliente(int identificacion, int telefono, const string &nombre, const string &apellidos, const string &direccion);
-
-    Cliente();
-
+    string telefono;
 };
-
 
 #endif //PS_CLIENTE_H

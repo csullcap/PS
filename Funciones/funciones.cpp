@@ -1,22 +1,25 @@
 #include <iostream>
 #include <windows.h>
-#include <afxres.h>
+
 #include <conio.h>
 #define ENTER 13
 #define BACKSPACE 8
 #include "../Administrador/Administrador.h"
 #include "../Conexion/Conexion.h"
+#include "../Habitacion/Habitacion.h"
+#include "../ReciboHospedaje/ReciboHospedaje.h"
 
 using namespace std;
 bool iniciarSesion(Administrador& admin,Conexion bd_conexion);
 void menu_principal(Administrador& admin,Conexion bd_conexion);
+void servicioDeHotel(Administrador& admin,Conexion bd_conexion);
 void gotoxy(int x,int y);
 void imprimir_rectangle(char a);
 
 inline bool iniciarSesion(Administrador& admin,Conexion bd_conexion) {
     string user;
     string password;
-    char op;
+    char op_iniciar_sesion=0;
     bool autentificacion=false;
     do {
         cout << "Ingrese usuario" << endl;
@@ -24,7 +27,7 @@ inline bool iniciarSesion(Administrador& admin,Conexion bd_conexion) {
         getline(cin, user);
         cout << "Ingrese Contraseña" << endl;
         char caracter;
-        caracter = getch();
+        caracter = _getch();
         password = "";
         while (caracter != ENTER) {
             if (caracter != BACKSPACE) {
@@ -37,12 +40,12 @@ inline bool iniciarSesion(Administrador& admin,Conexion bd_conexion) {
                     password = password.substr(0, password.length() - 1);
                 }
             }
-            caracter = getch();
+            caracter = _getch();
         }
         //getline(cin, password);
         if(bd_conexion.inicioSesion(admin,user,password)) {
             cout<<endl<<endl<<"Cuenta valida"<<endl;
-            cout<<"Espere un momento";
+            cout<<"Espere un momento ";
             Sleep(1000);
             cout<<".";
             Sleep(1000);
@@ -55,21 +58,21 @@ inline bool iniciarSesion(Administrador& admin,Conexion bd_conexion) {
             cout<<endl<<endl<<"Usuario o contraseña invalidos"<<endl;
             cout<<"Desea intertar nuevamente (1)Si (2)No"<<endl;
             cout<<"Opcion: ";
-            cin>>op;
+            cin>>op_iniciar_sesion;
         }
         system("cls");
-    }while (!autentificacion ^ op=='2');
+    }while ((!autentificacion )^(op_iniciar_sesion=='2'));
     if(autentificacion){
         return true;
     }
-    if(op=='2'){
+    if(op_iniciar_sesion=='2'){
         return false;
     }
     return false;
 }
 
 inline void menu_principal(Administrador& admin,Conexion bd_conexion) {
-    char op;
+    char op_menu_principal=0;
     do{
         cout<<"Menu Principal"<< endl;
         cout<<"(1) Reservaciones"<<endl;
@@ -78,9 +81,10 @@ inline void menu_principal(Administrador& admin,Conexion bd_conexion) {
         cout<<"(4) Administradores"<<endl;
         cout<<"(5) Clientes"<<endl;
         cout<<"(6) Servicios"<<endl;
+        cout<<"(7) Salir"<<endl;
         cout<<"Opcion : ";
-        cin>>op;
-        switch (op) {
+        cin>>op_menu_principal;
+        switch (op_menu_principal) {
 
             case '1':
                 system("cls");
@@ -91,7 +95,7 @@ inline void menu_principal(Administrador& admin,Conexion bd_conexion) {
             case '2':
                 system("cls");
                 cout<<"SERVICIO DE HOTEL"<<endl;
-                system("pause");
+                servicioDeHotel(admin,bd_conexion);
                 break;
 
             case '3':
@@ -119,9 +123,9 @@ inline void menu_principal(Administrador& admin,Conexion bd_conexion) {
                 break;
 
             case '7':
-                system("cls");
                 cout<<"Salio del menu principal"<<endl;
                 system("pause");
+                system("cls");
                 break;
 
             default:
@@ -131,9 +135,62 @@ inline void menu_principal(Administrador& admin,Conexion bd_conexion) {
                 break;
         }
 
-    }while(op!='7');
+    }while(op_menu_principal!='7');
 }
 
+inline void servicioDeHotel(Administrador& admin,Conexion bd_conexion){
+    char op_servicio_de_hotel=0;
+    do{
+        cout<<"Menu Principal"<< endl;
+        cout<<"(1) Agregar Registro de hospedaje"<<endl;
+        cout<<"(2) Ver Registros pendientes"<<endl;
+        cout<<"(3) Ver Estado de las habitaciones"<<endl;
+        cout<<"(4) Ver todos los registros"<<endl;
+        cout<<"(5) Salir"<<endl;
+        cout<<"Opcion : ";
+        cin>>op_servicio_de_hotel;
+        switch (op_servicio_de_hotel) {
+            case '1':
+                system("cls");
+                bd_conexion.addReciboHospedaje(admin);
+                break;
+
+            case '2':
+                system("cls");
+                bd_conexion.registrosPendientes();
+                system("pause");
+                break;
+
+            case '3':
+                system("cls");
+                cout<<"Estado de las habitaciones"<<endl;
+                bd_conexion.estadoHabitacion();
+                system("pause");
+                break;
+
+            case '4':
+                system("cls");
+                cout<<"Registros pendientes"<<endl;
+                system("pause");
+                break;
+
+            case '5':
+                cout<<"Ver todos los registros"<<endl;
+                system("pause");
+                system("cls");
+                break;
+
+            default:
+                system("cls");
+                cin.ignore(256,'\n');
+                cout<< "Opcion Invalida";
+                break;
+        }
+        system("cls");
+
+    }while(op_servicio_de_hotel!='5');
+
+}
 inline void gotoxy(int x,int y){
     HANDLE hcon;
     hcon =GetStdHandle(STD_OUTPUT_HANDLE);

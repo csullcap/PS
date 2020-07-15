@@ -16,13 +16,12 @@ set(P_S main.cpp
 #        Usuario/Usuario.cpp Usuario/Usuario.h
 #        Cliente/Cliente.cpp Cliente/Cliente.h
 #        Administrador/Administrador.h Administrador/Administrador.cpp
-#        Turno/Turno.cpp Turno/Turno.h
 #        Reservacion/Reservacion.cpp Reservacion/Reservacion.h
 #        TipoHabitacion/TipoHabitacion.cpp TipoHabitacion/TipoHabitacion.h
 #        ReciboHospedaje/ReciboHospedaje.cpp ReciboHospedaje/ReciboHospedaje.h
 #        AdquirirServicio/AdquirirServicio.cpp AdquirirServicio/AdquirirServicio.h
 #        Habitacion/Habitacion.cpp Habitacion/Habitacion.h
-        Funciones/funciones.cpp Conexion/Conexion2.cpp Conexion/Conexion.cpp Conexion/Conexion.h)
+        Funciones/funciones.cpp Conexion/Conexion2.cpp Conexion/Conexion.cpp Conexion/Conexion.h ReciboHospedaje_Cliente/ReciboHospedaje_Cliente.h)
 add_executable(PS ${P_S})
 target_link_libraries(PS mysqlcppconn.lib)
 target_link_libraries(PS libmysql)

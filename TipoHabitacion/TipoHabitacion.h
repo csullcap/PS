@@ -1,6 +1,3 @@
-//
-// Created by Jerbo on 18/06/2020.
-//
 
 #ifndef PS_TIPOHABITACION_H
 #define PS_TIPOHABITACION_H
@@ -8,29 +5,12 @@
 
 using namespace std;
 
-class TipoHabitacion {
+struct TipoHabitacion {
+    int id_tipohabitacion;
+    int id_hotel;
     string nombre;
     string caracteristicas;
-    double precioPorHora;
-public:
-    const string &getNombre() const;
-
-    virtual ~TipoHabitacion();
-
-    TipoHabitacion(const string &nombre, const string &caracteristicas, double precioPorHora);
-
-    TipoHabitacion();
-
-    void setNombre(const string &nombre);
-
-    const string &getCaracteristicas() const;
-
-    void setCaracteristicas(const string &caracteristicas);
-
-    double getPrecioPorHora() const;
-
-    void setPrecioPorHora(double precioPorHora);
-
+    double precioxhora;
 };
 
 

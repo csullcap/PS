@@ -21,9 +21,9 @@ int main() {
     Conexion bd_conexion;
     Hotel hotel=bd_conexion.getDatosHotel(1);
     Administrador administrador;
-    char op;
+    char op_main;
     do {
-        system("mode con: cols=80 lines=25");
+        //system("mode con: cols=80 lines=25");
         imprimir_rectangle('=');
         gotoxy(8,8);
         cout <<"Hotel : "<<tab<<hotel.nombre<<tab<< endl;
@@ -39,8 +39,8 @@ int main() {
         cout <<"(2) Cerrar"<<tab<<endl;
         gotoxy(8,14);
         cout <<"Opcion : ";
-        cin>>op;
-        switch (op) {
+        cin>>op_main;
+        switch (op_main) {
 
             case '1':
                 system("cls");
@@ -61,7 +61,7 @@ int main() {
                 cout<< "Opcion Invalida";
                 break;
         }
-    }while (op!='2');
+    }while (op_main!='2');
     bd_conexion.finalizarConexion();
     return 0;
 }
